@@ -56,5 +56,11 @@ void loop()
     	}
   	}  
   	
-  	Serial.println(seq_atual);	
+  	Serial.print("seq_atual = ");	
+   	Serial.println(seq_atual);	
+    Serial.print("tempo = ");	
+  	Serial.println(tempo);	
+  	Serial.println("");	
+  
+	delay(1000);
 }
