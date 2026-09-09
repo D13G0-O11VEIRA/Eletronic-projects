@@ -23,7 +23,7 @@ int status_led = 0;
 int seq_atual = 1;
 int tempo = 500;
 
-// CONFIG. ENTRADAS ARDUINO
+// CONFIG. PINOS ARDUINO
 void setup()
 {
 	pinMode(pin_led1, OUTPUT);
@@ -37,47 +37,24 @@ void setup()
 	pinMode(pin_bt1, INPUT);
   	pinMode(pin_bt2, INPUT);
   	pinMode(pin_bt3, INPUT);
+  	Serial.begin(9600);
 }
 
 // LOOP DE ACIONAMENTO
 void loop()
 {
-	// SEQUENCIA DE ACIONAMENTO	
-  	leitura_bt1 = digitalRead(pin_bt1); //VALOR DO BOTÃO
-	if (seq_atual == 5) // RESET NA CONTAGEM
-    {
-    	seq_atual = 1;
-    }
-  	if (leitura_bt1 == 1) // INCREMENTO AO ACIONAR O BOTÃO
-    {
-    	seq_atual +=1;
-    }  
-  	// DEFINIÇÕES DE CADA SEQUENCIA 	
-  	if (seq_atual == 1)
-    {
-    
-    }
-	if (seq_atual == 2)
-    {
-    
-    }
-  	if (seq_atual == 3)
-    {
-    
-    }
-  	if (seq_atual == 4)
-    {
-    
-    }
-  
-  	//TEMPORIZAÇÃO
-
-  
-  	leitura_bt1 = digitalRead(pin_bt1); //VALOR DO BOTÃO
-	if (leitura_bt1 == 1)
-    {
-      	status_led = !status_led; // SELO DO BOTÃO
-    }  
+	leitura_bt1 = digitalRead(pin_bt1); //VALOR DO BOTÃO SEQ.
+  	leitura_bt2 = digitalRead(pin_bt2); //VALOR DO BOTÃO +
+   	leitura_bt3 = digitalRead(pin_bt3); //VALOR DO BOTÃO -
 	
-    digitalWrite(pin_led1, status_led); // ACIONAMENTO DO LED
+	if (leitura_bt1 == 1) // INCREMENTO AO ACIONAR O BOTÃO
+    {
+    	seq_atual = seq_atual + 1;
+      	if (seq_atual > 3) // RESET NA CONTAGEM
+    	{
+    		seq_atual = 1;
+    	}
+  	}  
+  	
+  	Serial.println(seq_atual);	
 }
