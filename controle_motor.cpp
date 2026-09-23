@@ -25,8 +25,9 @@ void setup(){
 void loop(){
 	lei_pt = analogRead(pin_pt);
 
-	Serial.print("Valor do potenciometro = ")
+	Serial.print("Valor do potenciometro = ");
 	Serial.print(lei_pt);
-  	Serial.println("=======================")
-    delay(1000)
+  	Serial.println("");
+  	Serial.println("=============================");
+    delay(1000);
 }
