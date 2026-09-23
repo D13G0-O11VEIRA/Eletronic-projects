@@ -31,6 +31,7 @@ void loop(){
   	Serial.println("");
   	Serial.print("Valor da tensao = ");
 	Serial.print(ten);
+  	Serial.print("V");
   	Serial.println("");
   	Serial.println("=============================");
     delay(1000);
