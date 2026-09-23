@@ -24,9 +24,13 @@ void setup(){
 
 void loop(){
 	lei_pt = analogRead(pin_pt);
-
+  	ten = (lei_pt*5.0)/1023.0;
+    
 	Serial.print("Valor do potenciometro = ");
 	Serial.print(lei_pt);
+  	Serial.println("");
+  	Serial.print("Valor da tensao = ");
+	Serial.print(ten);
   	Serial.println("");
   	Serial.println("=============================");
     delay(1000);
