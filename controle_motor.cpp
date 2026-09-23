@@ -15,11 +15,18 @@ float vel_mt_per = 0;
 int sen_gir = 0;
 
 void setup(){
-	pinMode()
-
+	pinMode(pin_bt_h, INPUT);
+	pinMode(pin_bt_a, INPUT);
+	pinMode(pin_mt_h, OUTPUT);
+	pinMode(pin_mt_a, OUTPUT);
+	Serial.begin(9600);
 }
 
 void loop(){
+	lei_pt = analogRead(pin_pt);
 
-
+	Serial.print("Valor do potenciometro = ")
+	Serial.print(lei_pt);
+  	Serial.println("=======================")
+    delay(1000)
 }
