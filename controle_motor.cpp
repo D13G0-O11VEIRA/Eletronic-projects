@@ -1,18 +1,18 @@
 // C++ code
 
-int pin_bt_h = 2;	// Botão Horário
-int pin_bt_a = 3;	// Botão Anti-horário
-int pin_mt_h = 5; 	// Saída PWM para Ponte H (Horário)
-int pin_mt_a = 6;	// Saída PWM para Ponte H (Anti-horário)
-int pin_pt = A0; 	// Potenciometro
+int pin_bt_h = 2;		// Botão Horário
+int pin_bt_a = 3;		// Botão Anti-horário
+int pin_mt_h = 5; 		// Saída PWM para Ponte H (Horário)
+int pin_mt_a = 6;		// Saída PWM para Ponte H (Anti-horário)
+int pin_pt = A0; 		// Potenciômetro
 
-int lei_bt_h = 0;
-int lei_bt_a = 0;
-int lei_pt = 0;
-float ten = 0;
-int vel_mt_pwm = 0;
-float vel_mt_per = 0;
-int sen_gir = 0;
+int lei_bt_h = 0;		// Leitura do botão Horario
+int lei_bt_a = 0;		// Leitura do botão Anti-horario
+int lei_pt = 0;			// Tensão de saida do potenciômetro
+float ten = 0;			// Tensão em Volts
+int vel_mt_pwm = 0; 	// Valor de saida para o motor
+float vel_mt_per = 0;	// Perventual de Velocidade do motor
+int sen_gir = 0;		// Sentido de giro do motor
 
 void setup(){
 	pinMode(pin_bt_h, INPUT);
@@ -36,22 +36,18 @@ void loop(){
   	lei_bt_a = digitalRead(pin_bt_a);
 
   	if (lei_bt_h == HIGH) {
-    	sen_gir = 1;	// Sentido Horário
+    	sen_gir = 0;	// Sentido Horário
   	} else if (lei_bt_a == HIGH) {
-    	sen_gir = 2;	// Sentido Anti-horário
+    	sen_gir = 1;	// Sentido Anti-horário
   	}
   
   	// Controle da Ponte H
-	if (sen_gir == 1) {
+	if (sen_gir == 0) {
 		analogWrite(pin_mt_h, vel_mt_pwm);
 		analogWrite(pin_mt_a, 0);
-	} else if (sen_gir == 2) {
+	} else if (sen_gir == 1) {
 		analogWrite(pin_mt_h, 0);
 		analogWrite(pin_mt_a, vel_mt_pwm);
-	} else {
-		// Caso nenhum botão tenha sido pressionado ainda
-		analogWrite(pin_mt_h, 0);
-		analogWrite(pin_mt_a, 0);
 	}
   
   	// Saida para o cmd
@@ -74,12 +70,10 @@ void loop(){
   	Serial.println("");
   
   	Serial.print("Sentido de Giro: ");
-  	if (sen_gir == 1) {
+  	if (sen_gir == 0) {
   		Serial.println("Anti-horario");
-    } else if (sen_gir == 2){
+    } else if (sen_gir == 1){
     	Serial.println("Horario");
-    } else {
-      	Serial.println("Parado");
     }
   
   	Serial.println("===================================");
