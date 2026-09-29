@@ -5,7 +5,7 @@ int pin_echo = 3;
 
 unsigned long tempo = 0;	// tempo
 float dis = 0;				// distancia
-float v_som = 0.0340; 		// velocidade do som em cm/µs
+float v_som = 0.0343218; 	// velocidade do som em cm/µs
 
 void setup(){
 	pinMode(pin_trig, OUTPUT);
@@ -19,8 +19,17 @@ void loop(){
   	delayMicroseconds(10);
   	digitalWrite(pin_trig, LOW);
   	tempo = pulseIn(pin_echo, HIGH);
+  	dis = (tempo*v_som)/2;
+  
+  
   
   	Serial.print("Tempo ida e volta = ");
-    Serial.println(tempo);
+    Serial.print(tempo);
+  	Serial.println("us");
   	Serial.println("=========================");
+  	Serial.print("Distancia = ");
+    Serial.print(dis);
+  	Serial.println("cm");
+  	Serial.println("=========================");
+  	delay(1000);
 }
