@@ -21,12 +21,9 @@ void loop(){
   	tempo = pulseIn(pin_echo, HIGH);
   	dis = (tempo*v_som)/2;
   
-  
-  
   	Serial.print("Tempo ida e volta = ");
     Serial.print(tempo);
   	Serial.println("us");
-  	Serial.println("=========================");
   	Serial.print("Distancia = ");
     Serial.print(dis);
   	Serial.println("cm");
