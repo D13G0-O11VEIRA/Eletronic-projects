@@ -1,7 +1,15 @@
 // C++ code
 
+#include <LiquidCrystal.h>
+
 int pin_trig = 2;
 int pin_echo = 3;
+int pin_RS = 4;
+int pin_E = 5;
+int pin_4 = 6;
+int pin_5 = 7;
+int pin_6 = 8;
+int pin_7 = 9;  
 
 unsigned long tempo = 0;	// tempo
 float dis = 0;				// distancia
