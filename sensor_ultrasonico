@@ -8,9 +8,14 @@ float dis = 0;				// distancia
 float v_som = 0.0340; 		// velocidade do som em cm/µs
 
 void setup(){
-
+	pinMOde(pin_trig, OUTPUT);
+    pinMOde(pin_echo, INPUT);
+    
+    Serial.begin(9600);
 }
 
 void loop(){
-
+	digitalWrite(pin_trig, HIGH);
+  	delayMicroseconds(10);
+  	digitalWrite(pin_trig, LOW);
 }
