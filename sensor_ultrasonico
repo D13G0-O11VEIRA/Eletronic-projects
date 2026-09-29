@@ -1,0 +1,16 @@
+// C++ code
+
+int pin_trig = 2;
+int pin_echo = 3;
+
+unsigned long tempo = 0;	// tempo
+float dis = 0;				// distancia
+float v_som = 0.0340; 		// velocidade do som em cm/µs
+
+void setup(){
+
+}
+
+void loop(){
+
+}
