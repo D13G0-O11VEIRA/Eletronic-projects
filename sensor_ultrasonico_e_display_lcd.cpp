@@ -16,8 +16,8 @@ LiquidCrystal lcd(pin_RS, pin_E, pin_4 , pin_5 , pin_6 , pin_7);
 unsigned long tempo = 0;	// tempo
 float dis = 0;				// distancia
 float v_som = 0.0343218; 	// velocidade do som em cm/µs
-int lei_bt = 0;
-int menu = 0;
+int lei_bt = 0;				// leitura do botão
+int menu = 0;				// menu do display
 
 void setup(){
 	pinMode(pin_trig, OUTPUT);
