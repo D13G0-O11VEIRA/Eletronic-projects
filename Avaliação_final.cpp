@@ -41,6 +41,7 @@ int vel_mt_pwm = 0;     // Valor alvo de PWM para o motor
 float vel_mt_per = 0;   // Percentual de velocidade do motor
 int pwm_atual = 0;		// Velocidade atual aplicada durante a rampa
 int menu = 0;			// menu do display
+int onoff = 0;
 
 void setup(){
   	pinMode(pin_led, OUTPUT);
@@ -63,16 +64,21 @@ void loop(){
 	lei_bt1 = digitalRead(pin_bt1);
   	lei_bt2 = digitalRead(pin_bt2);
 	if (lei_bt1 == HIGH){ // start stop
-		
-      
+		onoff++;
+        if (onoff > 1){
+        	onoff = 0;
+        }
+    }
+  	if (onoff == 1){
       	analogWrite(pin_tip120, vel_mt_pwm);
+        analogWrite(pin_led, 255);
 		pwm_atual = vel_mt_pwm;
 	}
   
   
   	if (lei_bt2 == HIGH) { // menu
 		menu++;
-    	if(menu > 3){
+    	if (menu > 3){
     		menu = 0;
     	}
 	}
