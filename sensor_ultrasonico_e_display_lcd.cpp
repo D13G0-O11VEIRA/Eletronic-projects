@@ -26,9 +26,6 @@ void setup(){
   
   	Serial.begin(9600);
   	lcd.begin(16, 2);
-
-	lcd.setCursor(0, 0);
-  	lcd.print("teste");
 }
 
 void loop(){
@@ -39,6 +36,34 @@ void loop(){
     		menu = 0;
     	}
     }
+  	if (menu == 0){
+  		lcd.clear();
+    	lcd.setCursor(0, 0);
+    	lcd.print("Menu: ");
+    	lcd.setCursor(7, 0);
+    	lcd.print(menu);
+      
+    	lcd.setCursor(0, 1);
+		lcd.print("Dist: ");
+    	lcd.setCursor(6, 1);
+		lcd.print(dis);
+    	lcd.setCursor(12, 1);
+		lcd.print("cm");  
+    }    
+  	if (menu == 1){
+  		lcd.clear();
+    	lcd.setCursor(0, 0);
+    	lcd.print("Menu: ");
+    	lcd.setCursor(7, 0);
+    	lcd.print(menu);
+      
+    	lcd.setCursor(0, 1);
+		lcd.print("Dist: ");
+    	lcd.setCursor(6, 1);
+		lcd.print(dis/100.00);
+    	lcd.setCursor(12, 1);
+		lcd.print("m");  
+    }     
   	
 	digitalWrite(pin_trig, HIGH);
   	delayMicroseconds(10);
