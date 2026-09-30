@@ -9,17 +9,21 @@ int pin_E = 5;
 int pin_4 = 6;
 int pin_5 = 7;
 int pin_6 = 8;
-int pin_7 = 9;  
+int pin_7 = 9;
+int pin_bt = 10;
 
 LiquidCrystal lcd(pin_RS, pin_E, pin_4 , pin_5 , pin_6 , pin_7);
 unsigned long tempo = 0;	// tempo
 float dis = 0;				// distancia
 float v_som = 0.0343218; 	// velocidade do som em cm/µs
+int lei_bt = 0;
+int menu = 0;
 
 void setup(){
 	pinMode(pin_trig, OUTPUT);
     pinMode(pin_echo, INPUT);
-    
+  	pinMode(pin_bt, INPUT);  
+  
   	Serial.begin(9600);
   	lcd.begin(16, 2);
 
@@ -28,6 +32,14 @@ void setup(){
 }
 
 void loop(){
+  	lei_bt = digitalRead(pin_bt);
+  	if (lei_bt == HIGH){
+  		menu++;
+    	if(menu > 1){
+    		menu = 0;
+    	}
+    }
+  	
 	digitalWrite(pin_trig, HIGH);
   	delayMicroseconds(10);
   	digitalWrite(pin_trig, LOW);
